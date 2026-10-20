@@ -136,7 +136,7 @@ void main(){
   float dim = smoothstep(.15, .5, scroll) * ${glslNumber(KNOBS.grade.fadeToInk)};
   col *= 1. - ${glslNumber(KNOBS.grade.scrimStrength)} * (1. - smoothstep(0., .5, v.y)) * (1. - dim);
   col = mix(col, vec3(${KNOBS.grade.inkColour.map(glslNumber).join(', ')}), dim);
-  col *= mix(.7, 1., 1. - smoothstep(.25, 1.1, length(v - .5) * ${glslNumber(KNOBS.grade.vignette)});
+  col *= mix(.7, 1., 1. - smoothstep(.25, 1.1, length(v - .5) * ${glslNumber(KNOBS.grade.vignette)}));
   gl_FragColor = vec4(col, 1.);
 }`
 
