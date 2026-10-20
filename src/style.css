@@ -1,0 +1,86 @@
+:root {
+  --ink: #0a1517;
+  --bone: #ebe8dc;
+  --sun: #d3b95a;
+  --rule: rgba(235, 232, 220, .3);
+  --loader-disc: rgba(235, 232, 220, .1);
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --text-max: 42rem;
+  --font-body: "Century Gothic", CenturyGothic, "URW Gothic", AppleGothic, sans-serif;
+  --font-display: Futura, "Futura PT", var(--font-body);
+  --h1-size: clamp(3rem, 11.33vw, 10rem);
+  --wordmark-size: 11.67vw;
+  --stage-fade: 1.6s;
+  --index-fade: .4s;
+}
+* { box-sizing: border-box; margin: 0; }
+html { background: var(--ink); color: var(--bone); }
+@media (pointer: fine) {
+  body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%230a1517' stroke-width='3'%3E%3Cpath d='M1 12h7m8 0h7M12 1v7m0 8v7'/%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ebe8dc' stroke-width='1'%3E%3Cpath d='M1 12h7m8 0h7M12 1v7m0 8v7'/%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3C/g%3E%3C/svg%3E") 12 12, crosshair; }
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body { font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--sun); outline-offset: 4px; }
+
+#stage { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; display: block; opacity: 0; transition: opacity var(--stage-fade) ease; }
+.ready #stage { opacity: 1; }
+.no-gl #stage { display: none; }
+.no-gl { background-color: var(--ink); background-image: url(/layers/front.webp), url(/layers/mid.webp), url(/layers/base.webp); background-size: cover; background-position: center; background-attachment: fixed; }
+
+.bar { position: fixed; inset: 0 0 auto 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem var(--gutter); }
+.bar a { text-decoration: none; }
+.bar nav { display: flex; gap: 2rem; }
+.bar nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
+.mark { font-family: var(--font-body); font-size: 1.25rem; font-weight: 300; }
+
+section { padding: 0 var(--gutter); }
+.hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: clamp(2rem, 8vh, 5rem); }
+h1 { font-family: var(--font-display); font-weight: 300; font-size: var(--h1-size); line-height: .86; letter-spacing: -.03em; text-transform: uppercase; }
+.line { display: block; overflow: hidden; padding-top: .14em; padding-bottom: .1em; margin-top: -.14em; }
+.line > span { display: block; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.sub { margin-top: 1.5rem; max-width: 32ch; font-size: 1.125rem; }
+
+.statement, .work, .contact { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+.statement > *, .work > *, .contact > * { max-width: var(--text-max); }
+.big { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.9rem, 4.2vw, 3.25rem); line-height: 1.2; }
+.work h2 { font-family: var(--font-body); font-weight: 300; font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: 2rem; }
+.work ul { list-style: none; padding: 0; }
+.work li { display: flex; justify-content: space-between; gap: 2rem; padding: 1.25rem 0; border-top: 1px solid var(--rule); }
+.work li:last-child { border-bottom: 1px solid var(--rule); }
+.work li span:first-child { font-family: var(--font-body); font-size: 1.5rem; font-weight: 300; }
+.work li span:last-child { opacity: .75; text-align: right; }
+.mail { display: inline-block; margin-top: 1.5rem; font-size: 1.25rem; text-underline-offset: 6px; }
+footer { position: relative; overflow: hidden; min-height: 100svh; display: flex; flex-direction: column; justify-content: space-between; padding: 5.5rem var(--gutter) 0; }
+.credit { font-size: .8125rem; opacity: .75; }
+.wordmark { font-family: var(--font-display); font-weight: 200; font-size: var(--wordmark-size); line-height: 1; letter-spacing: -.04em; white-space: nowrap; margin: 0 0 -.2em -.04em; }
+
+html.intro { overflow: hidden; }
+#loader { position: fixed; inset: 0; z-index: 100; }
+#loader .lb { position: absolute; left: 0; right: 0; height: 50%; background: var(--ink); }
+#loader .top { top: 0; transform-origin: top; }
+#loader .bot { bottom: 0; transform-origin: bottom; }
+#loader .leader { position: absolute; left: 50%; top: 50%; width: min(70vmin, 30rem); aspect-ratio: 1; translate: -50% -50%; }
+#loader .disc { position: absolute; inset: 4%; border-radius: 50%; overflow: hidden; background: var(--loader-disc); }
+#loader .sweep { position: absolute; inset: 0; background: conic-gradient(from 0deg, rgba(235, 232, 220, 0) 25%, rgba(235, 232, 220, .5)); }
+#loader svg { position: absolute; inset: 0; fill: none; stroke: var(--bone); stroke-width: 1.2; opacity: .8; }
+#loader .num { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-body); font-weight: 200; font-size: min(44vmin, 20rem); line-height: 1; }
+#loader .flash { position: absolute; inset: 0; background: var(--bone); opacity: 0; pointer-events: none; }
+#loader .cap { position: absolute; left: 0; right: 0; bottom: 2rem; text-align: center; font-size: .8125rem; letter-spacing: .2em; text-transform: uppercase; opacity: .6; }
+
+.index { position: fixed; right: var(--gutter); top: 50%; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; font-size: .8125rem; }
+.index ol { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .35rem; align-items: flex-end; }
+.index button { all: unset; cursor: pointer; display: flex; gap: .75rem; align-items: baseline; opacity: .5; transition: opacity var(--index-fade); }
+.index button:hover, .index button[aria-current] { opacity: 1; }
+.index button:focus-visible { outline: 2px solid var(--sun); outline-offset: 4px; }
+.index i { font-style: normal; font-variant-numeric: tabular-nums; }
+.index button[aria-current] i { color: var(--sun); }
+.index .of { font-variant-numeric: tabular-nums; opacity: .6; }
+@media (max-width: 700px) {
+  .index { top: auto; bottom: 1.25rem; transform: none; }
+  .index ol { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) { #stage { transition: none; } }

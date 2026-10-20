@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" class="intro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <title></title>
+  <meta name="description" content="">
+</head>
+<body>
+  <div id="loader" role="status" data-copy-aria-label="LoadingLabel">
+    <i class="lb top"></i><i class="lb bot"></i>
+    <div class="leader" aria-hidden="true">
+      <div class="disc"><div class="sweep"></div></div>
+      <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="62"/><path d="M0 100H200M100 0V200"/></svg>
+      <span class="num"></span>
+    </div>
+    <i class="flash"></i>
+    <p class="cap" data-copy="Title"></p>
+  </div>
+  <noscript><style>#loader { display: none; }</style></noscript>
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <header class="bar">
+    <a class="mark" href="#top" data-copy="Title"></a>
+    <nav><a href="#work" data-copy="Section3"></a><a href="#contact" data-copy="Section4"></a></nav>
+  </header>
+  <nav class="index" data-copy-aria-label="SectionNavigationLabel"><ol></ol><p class="of" aria-hidden="true"></p></nav>
+  <main id="top">
+    <section class="hero" data-section-copy="Section1">
+      <h1><span class="line"><span data-copy="TitleLine1"></span></span><span class="line"><span data-copy="TitleLine2"></span></span></h1>
+      <p class="sub" data-copy="HeroDescription"></p>
+    </section>
+    <section class="statement" data-section-copy="Section2">
+      <p class="big" data-copy="Statement"></p>
+    </section>
+    <section class="work" id="work" data-section-copy="Section3">
+      <h2 data-copy="WorkHeading"></h2>
+      <ul>
+        <li><span data-copy="Project1Title"></span><span data-copy="Category1"></span></li>
+        <li><span data-copy="Project2Title"></span><span data-copy="Category2"></span></li>
+        <li><span data-copy="Project3Title"></span><span data-copy="Category3"></span></li>
+      </ul>
+    </section>
+    <section class="contact" id="contact" data-section-copy="Section4">
+      <p class="big" data-copy="ContactPrompt"></p>
+      <a class="mail" data-copy="ContactEmail"></a>
+    </section>
+  </main>
+  <footer>
+    <p class="credit" data-copy="PhotoCredit"></p>
+    <p class="wordmark" data-copy="Title"></p>
+  </footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
