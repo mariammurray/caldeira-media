@@ -245,6 +245,7 @@ function go(i: number) {
   // Hide sections that are neither the one being left nor the destination, so a revisit always starts clean.
   if (revealing()) groups.forEach((g, j) => { if (j !== i && j !== index) hide(g) })
   index = i
+  sections[0].classList.toggle('banner-hidden', index !== 0)
   busy = true
   const mine = ++stepId
   lenis.scrollTo(st[i], {
@@ -352,6 +353,7 @@ function applyMode() {
   if (stepped) { index = nearest(); lenis.stop(); lenis.scrollTo(stops()[index], { immediate: true, force: true }) }
   else if (introDone) lenis.start()
   else lenis.stop()
+  sections[0].classList.toggle('banner-hidden', index !== 0)
   syncReveals()
   setActive()
 }

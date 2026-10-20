@@ -83,6 +83,9 @@ html.intro { overflow: hidden; }
 .index button[aria-current] i { color: var(--sun); }
 .index .of { font-variant-numeric: tabular-nums; opacity: .6; }
 @media (max-width: 700px) {
+  .sub { position: relative; isolation: isolate; width: calc(100% + 2 * var(--gutter)); max-width: none; margin-left: calc(-1 * var(--gutter)); padding: .75rem var(--gutter); color: #fff; }
+  .sub::before { position: absolute; z-index: -1; inset: 0; content: ""; background: linear-gradient(to bottom, transparent, rgba(90, 64, 21, .84) 25%, rgba(90, 64, 21, .84) 75%, transparent); opacity: 1; transition: opacity .35s ease; pointer-events: none; }
+  .hero.banner-hidden .sub::before { opacity: 0; }
   .index { top: auto; bottom: 1.25rem; transform: none; }
   .index ol { display: none; }
 }
