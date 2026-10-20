@@ -171,11 +171,9 @@ const FALLBACK: Key[] = [{ x: .5, y: .5, z: KNOBS.camera.minZoom }, { x: .5, y: 
 const readPath = (url: string) =>
   fetch(url).then((r) => r.json() as Promise<Key[]>).then((p) => (Array.isArray(p) && p.length >= 2 ? p : null)).catch(() => null)
 // Portrait screens see a narrow strip of the 16:9 art, so by default the same path is used with a gentler zoom.
-// Drop a hand-drawn /path-portrait.json next to path.json to override it.
 async function loadPaths() {
   const land = (await readPath(`${import.meta.env.BASE_URL}path.json`)) ?? FALLBACK
   const paths = { land, port: land.map((k) => ({ ...k, z: KNOBS.camera.minZoom + (k.z - KNOBS.camera.minZoom) * KNOBS.camera.portraitZoomScale })) }
-  void readPath(`${import.meta.env.BASE_URL}path-portrait.json`).then((port) => { if (port) paths.port = port })
   return paths
 }
 
