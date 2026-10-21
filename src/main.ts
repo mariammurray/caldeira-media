@@ -242,8 +242,8 @@ function go(i: number) {
   if (i === index) return
   // Steps can be chained while a glide is running: retarget from the current position.
   const chained = busy
-  // Hide sections that are neither the one being left nor the destination, so a revisit always starts clean.
-  if (revealing()) groups.forEach((g, j) => { if (j !== i && j !== index) hide(g) })
+  // Everything except the section being left is reset up front, destination included, fixes bug where text was only partially re-animating on scrolling back
+  if (revealing()) groups.forEach((g, j) => { if (j !== index) hide(g) })
   index = i
   sections[0].classList.toggle('banner-hidden', index !== 0)
   busy = true
@@ -308,7 +308,7 @@ function show(g: Group) {
 }
 function arrive(i: number) {
   if (!revealing() || !groups.length) return
-  groups.forEach((g, j) => { if (j !== i) hide(g) })
+  groups.forEach(hide)
   show(groups[i])
 }
 function syncReveals() {
